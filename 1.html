@@ -1,0 +1,38 @@
+<html>
+<table>
+<tr>
+    <th>field1</th>
+    <th>field2</th>
+    <th>field3</th>
+    <th>field4</th>
+    <th>field5</th>
+</tr>
+<?php
+try {
+    $conn = new PDO("mysql:host=$servername;dbname=myDB", $username, $password);
+    // set the PDO error mode to exception
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo "Connected successfully"; 
+    }
+catch(PDOException $e)
+    {
+    echo "Connection failed: " . $e->getMessage();
+    };
+$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+$sth = $conn->prepare("SELECT * FROM employees");
+$sth->execute();
+$result = $sth->fetch(PDO::FETCH_ASSOC);
+?>
+<?php foreach($result as $index => $row) : ?>
+<tr>
+    <td><?php echo $row[field1]; ?></td>
+    <td><?php echo $row[field2]; ?></td>
+    <td><?php echo $row[field3]; ?></td>
+    <td><?php echo $row[field4]; ?></td>
+    <td><?php echo $row[field5]; ?></td>
+</tr>
+<?php endforeach;?>
+</table>
+</body>
+</html>
