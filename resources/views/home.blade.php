@@ -1,5 +1,5 @@
 @extends('layout')
 
-    @section('layout')
+    @section('content')
         <p>Home page</p>
     @endsection
