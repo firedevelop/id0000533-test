@@ -17,5 +17,6 @@
     @yield('content')
     @yield('products')
     @yield('customers')
+    <p>footer</p>
 </body>
     </html>
